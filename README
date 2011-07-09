@@ -1,8 +1,18 @@
-SDL Perl Game Contest!
-======================
+NAME
+    Games::PuzzleCars - Puzzle game involving cars
 
-This repository contains games I made for the SDL Perl Game Contest.
+SYNOPSIS
+        perl puzzlecars.pl
 
-For more information about the contest see:
+    Options:
+        --easy    Use the easy map
+        --hard    Use the hard map
 
-    http://onionstand.blogspot.com/2011/02/sdl-perl-game-contest.html
+INSTRUCTIONS
+    Click on the intersections to change which way the cars will turn.  Try to
+    match the cars' color with the road they use to exit the screen to earn
+    points.  If the colors don't match, you lose points.
+
+PREREQUISIES
+    * SDL
+    * Mouse
