@@ -284,6 +284,27 @@ sub _add_car {
     push @{ $self->cars }, $car;
 }
 
-no Mouse;
+__PACKAGE__->meta->make_immutable;
 
 1;
+
+=pod
+
+=head1 SYNOPSIS
+
+    use Games::PuzzleCars;
+
+=head1 DESCRIPTION
+
+What does this module do?
+
+=head1 SEE ALSO
+
+=over 4
+
+=item * L<SDL>
+
+=back
+
+=cut
+
