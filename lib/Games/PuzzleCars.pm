@@ -1,7 +1,11 @@
 package Games::PuzzleCars;
+use strict;
+use warnings;
 use Mouse;
-use FindBin qw( $Bin );
+use namespace::clean -except => 'meta';
+use FindBin;
 use File::Spec;
+use File::ShareDir;
 use SDL 2.500;
 use SDLx::App;
 use SDLx::Surface;
@@ -12,7 +16,7 @@ use Games::PuzzleCars::Car;
 has share_dir => (
     is      => 'ro',
     isa     => 'Str',
-    default => sub { File::Spec->catdir( $Bin, 'share' ) },
+    builder => '_build_share_dir',
 );
 
 has app => (
@@ -81,6 +85,16 @@ has _surfaces => (
     lazy    => 1,
     builder => '_build_surfaces',
 );
+
+sub _build_share_dir {
+    my $root = File::Spec->catdir( $FindBin::Bin, '..' );
+    if ( -f File::Spec->catfile( $root, 'dist.ini' ) ) {
+        return File::Spec->catdir( $root, 'share' );
+    }
+    else {
+        return File::ShareDir::dist_dir('Games-PuzzleCars');
+    }
+}
 
 sub _build_app {
     return SDLx::App->new(
