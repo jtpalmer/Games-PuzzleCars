@@ -2,7 +2,7 @@ package Games::PuzzleCars;
 use Mouse;
 use FindBin qw( $Bin );
 use File::Spec;
-use SDL;
+use SDL 2.500;
 use SDLx::App;
 use SDLx::Surface;
 use SDLx::Text;
