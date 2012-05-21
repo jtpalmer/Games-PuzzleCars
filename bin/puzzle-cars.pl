@@ -1,8 +1,13 @@
-#!/usr/bin/env perl
+#!perl
 use strict;
 use warnings;
-use FindBin qw( $Bin );
-use lib "$Bin/lib";
+
+BEGIN {
+    if ( $^O eq 'darwin' && $^X ne 'SDLPerl' ) {
+        exec 'SDLPerl', $0, @ARGV or die "Failed to exec SDLPerl: $!";
+    }
+}
+
 use Games::PuzzleCars;
 use Getopt::Long;
 
@@ -19,3 +24,6 @@ $difficulty = 'easy' if $easy;
 $difficulty = 'hard' if $hard;
 
 Games::PuzzleCars->new( difficulty => $difficulty )->run();
+
+exit;
+
